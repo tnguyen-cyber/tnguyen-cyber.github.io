@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Teresa Nguyen — IT & Systems Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg:        #f7f6f2;
+    --surface:   #ffffff;
+    --ink:       #1a1917;
+    --ink-soft:  #6b6860;
+    --ink-faint: #b0aea8;
+    --accent:    #2a5c45;
+    --accent-lt: #e8f1ed;
+    --rule:      #e2e0da;
+    --mono:      'DM Mono', monospace;
+    --serif:     'DM Serif Display', serif;
+    --sans:      'DM Sans', sans-serif;
+    --radius:    6px;
+    --max:       860px;
+    --transition: 220ms ease;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(247,246,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 28px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color var(--transition);
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 96px 0 80px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(42px, 6vw, 64px);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-summary {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--ink-soft);
+    max-width: 580px;
+    line-height: 1.75;
+    margin-bottom: 40px;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-lt);
+    border: 1px solid rgba(42,92,69,0.18);
+    padding: 5px 11px;
+    border-radius: 100px;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    display: block;
+    height: 1px;
+    flex: 1;
+    background: var(--rule);
+  }
+
+  /* ── PROJECT CARDS ── */
+  .projects-grid {
+    display: grid;
+    gap: 2px;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: box-shadow var(--transition), transform var(--transition);
+    cursor: default;
+  }
+
+  .project-card:hover {
+    box-shadow: 0 8px 32px rgba(26,25,23,0.08);
+    transform: translateY(-2px);
+  }
+
+  .card-header {
+    padding: 28px 32px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: var(--accent-lt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .card-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .card-meta {
+    flex: 1;
+  }
+
+  .card-category {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 6px;
+  }
+
+  .card-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .card-body {
+    padding: 24px 32px 28px;
+  }
+
+  .card-problem {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--mono);
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  .card-problem span {
+    color: var(--accent);
+    margin-right: 6px;
+  }
+
+  .card-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .card-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 24px;
+  }
+
+  .card-points li {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ink);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .card-points li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 12px;
+    top: 1px;
+  }
+
+  .card-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .stack-chip {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    padding: 3px 9px;
+    border-radius: 4px;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2px;
+  }
+
+  .skill-group {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+  }
+
+  .skill-group-label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .skill-list li {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  /* ── EXPERIENCE ── */
+  .experience-block {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 32px;
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .exp-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
+
+  .exp-company {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+
+  .exp-note {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    padding: 10px 14px;
+    background: var(--accent-lt);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .exp-bullets li {
+    font-size: 14.5px;
+    font-weight: 300;
+    color: var(--ink);
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .exp-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 12px;
+    top: 2px;
+  }
+
+  /* ── CERTS ── */
+  .certs-note {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .certs-note-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .certs-note-text {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  .certs-note-text strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ── CONTACT ── */
+  .contact-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 11px 20px;
+    border-radius: var(--radius);
+    transition: all var(--transition);
+    border: 1px solid transparent;
+  }
+
+  .contact-btn.primary {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  .contact-btn.primary:hover {
+    background: #1e4433;
+    border-color: #1e4433;
+  }
+
+  .contact-btn.secondary {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--rule);
+  }
+
+  .contact-btn.secondary:hover {
+    border-color: var(--ink-soft);
+    background: var(--surface);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 32px 0;
+    border-top: 1px solid var(--rule);
+    margin-top: 0;
+  }
+
+  .footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-name {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeUp 0.5s ease both; }
+  .hero h1      { animation: fadeUp 0.5s 0.08s ease both; }
+  .hero-summary { animation: fadeUp 0.5s 0.16s ease both; }
+  .hero-tags    { animation: fadeUp 0.5s 0.24s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .card-header { flex-direction: column; gap: 12px; }
+    .exp-header { flex-direction: column; }
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">TN</a>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">CompTIA Security+ · IT · Network Security · Web Dev</p>
+    <h1>Teresa<br><em>Nguyen</em></h1>
+    <p class="hero-summary">
+      CompTIA Security+-certified systems administrator, network architect, and automation engineer.
+      I build infrastructure that scales, secure networks that hold, and tools that replace manual work —
+      independently and from scratch.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">CompTIA Security+</span>
+      <span class="tag">UniFi · UDM Pro</span>
+      <span class="tag">WireGuard VPN</span>
+      <span class="tag">YubiKey · FIDO2</span>
+      <span class="tag">Google Workspace Admin</span>
+      <span class="tag">Shopify Dev</span>
+      <span class="tag">Cloudflare R2</span>
+      <span class="tag">PowerShell</span>
+      <span class="tag">Synology NAS</span>
+      <span class="tag">REST APIs</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="container">
+    <p class="section-label">Featured Projects</p>
+    <div class="projects-grid">
+
+      <!-- PROJECT 1: NETWORK -->
+      <div class="project-card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><circle cx="7" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="17" cy="10" r="1" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <div class="card-meta">
+            <p class="card-category">Network Infrastructure · Security</p>
+            <h2 class="card-title">Enterprise Network Architecture & Security</h2>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-problem"><span>Problem:</span>Business had a flat, unsegmented network with no remote access, no threat detection, and no access controls between devices.</p>
+          <p class="card-desc">Designed and deployed a fully segmented enterprise network on Ubiquiti UniFi hardware from the ground up. Implemented VLAN isolation, dual-tier VPN access, a layered firewall ruleset, and active intrusion prevention — replacing an undifferentiated network with a zero-trust-adjacent architecture.</p>
+          <ul class="card-points">
+            <li>Deployed Ubiquiti UDM Pro as core router and controller, connected to a Comcast Business fiber uplink with provisioned static IP</li>
+            <li>Designed 4-VLAN network: Core (VLAN 1), Staff (VLAN 20), Security (VLAN 30), IoT (VLAN 40) — isolating untrusted devices from operations</li>
+            <li>Implemented two WireGuard VPN servers: Admin VPN (full LAN access) and Remote VPN (scoped access), with separate firewall enforcement for each tier</li>
+            <li>Wrote 15 custom firewall rules using named network objects — blocking VPN clients from Staff VLAN and NAS by default, restricting Worker VPN to Google Workspace IPs on HTTPS only</li>
+            <li>Enabled UniFi CyberSecure IPS (Proofpoint + Cloudflare) with 70,955 active signatures across 6 threat categories: botnets, malware, exploits, P2P/dark web, reconnaissance, and protocol vulnerabilities</li>
+            <li>Staged staff VPN firewall rules in disabled state for clean future activation — no reconfiguration required at rollout</li>
+          </ul>
+          <div class="card-stack">
+            <span class="stack-chip">Ubiquiti UniFi UDM Pro</span>
+            <span class="stack-chip">WireGuard</span>
+            <span class="stack-chip">VLAN Segmentation</span>
+            <span class="stack-chip">Firewall Policy</span>
+            <span class="stack-chip">IDS/IPS</span>
+            <span class="stack-chip">Comcast Business Fiber</span>
+            <span class="stack-chip">Static IP</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: NAS -->
+      <div class="project-card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3S3 13.66 3 12"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div class="card-meta">
+            <p class="card-category">Storage · Access Management</p>
+            <h2 class="card-title">Synology NAS — Media & Data Repository</h2>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-problem"><span>Problem:</span>Business had no centralized storage, no backup infrastructure, and no secure way to manage internal media or offboarded employee data.</p>
+          <p class="card-desc">Provisioned and configured a Synology NAS as the organization's central file server and media database. Migrated a full employee mailbox archive into the NAS. Implemented a dedicated firewall profile on the NAS itself as a second layer of access control beyond the network perimeter.</p>
+          <ul class="card-points">
+            <li>Configured Synology DSM: shared folders, user/group permissions, file services (rsync, NTP, NFS), and remote access via Synology Drive</li>
+            <li>Migrated a complete employee email archive (100+ export files) into NAS-hosted storage as part of a formal offboarding procedure</li>
+            <li>Built a 9-rule NAS-level firewall profile: explicit allowlist for Staff VLAN and specific trusted IPs, Admin VPN access enabled, all other traffic denied by default</li>
+            <li>Defense-in-depth architecture: NAS firewall enforces access independently of the UniFi perimeter, ensuring protection even if upstream rules are misconfigured</li>
+            <li>Staged staff VPN rule pre-written in disabled state, ready to activate when staff VPN is provisioned</li>
+          </ul>
+          <div class="card-stack">
+            <span class="stack-chip">Synology DSM</span>
+            <span class="stack-chip">NAS Firewall</span>
+            <span class="stack-chip">Data Migration</span>
+            <span class="stack-chip">Access Control</span>
+            <span class="stack-chip">rsync</span>
+            <span class="stack-chip">Defense-in-Depth</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3: SHOPIFY PIPELINE -->
+      <div class="project-card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="card-meta">
+            <p class="card-category">Automation · Web Dev · API Integration</p>
+            <h2 class="card-title">Shopify CDN Media Pipeline</h2>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-problem"><span>Problem:</span>Shopify storage was completely full — the business could not create new product listings. Videos hosted on Shopify were consuming all available storage.</p>
+          <p class="card-desc">Designed and built a complete 6-stage media automation pipeline in PowerShell to migrate product videos from Shopify-hosted storage to Cloudflare R2, freeing storage capacity and unblocking new product creation. Registered and configured a custom Shopify Admin API app with precisely scoped permissions. Migrated <strong>1,815 products</strong> to CDN-hosted video in production. Extended the Shopify theme with custom Liquid and CSS to display CDN-hosted videos with full backward compatibility for legacy Shopify-hosted content.</p>
+          <ul class="card-points">
+            <li><strong>Custom Shopify App:</strong> Registered a private Admin API app (<em>Product &amp; Media Automation</em>) with precisely scoped OAuth permissions — <code>read/write_products</code>, <code>read/write_inventory</code>, <code>read/write_metaobjects</code>, <code>read/write_product_listings</code>, <code>read/write_files</code> — using API version 2026-01</li>
+            <li><strong>Stage 1 — Organize:</strong> CSV-driven script pairs raw camera files (JPG + video) to product SKUs and creates a standardized folder structure per SKU, with dry-run mode</li>
+            <li><strong>Stage 2 — Normalize:</strong> ffmpeg pipeline converts .MOV files to web-optimized .MP4 with <code>faststart</code> flag for streaming performance</li>
+            <li><strong>Stage 3 — Upload:</strong> Pushes organized media to Cloudflare R2 via AWS S3-compatible CLI; skips existing SKUs idempotently; timestamped logs</li>
+            <li><strong>Stage 4 — Auth:</strong> Built a local OAuth 2.0 callback server using <code>System.Net.HttpListener</code> in PowerShell — no dependencies — to capture and exchange Shopify authorization codes</li>
+            <li><strong>Stage 5 — Create Drafts:</strong> Calls Shopify Admin REST API to create draft product listings from CSV; validates all fields (title, description, weight with unit conversion, tags); stores CDN URL as a custom product metafield (<code>custom.external_video_url</code>)</li>
+            <li><strong>Stage 6 — Validate &amp; Fix:</strong> Post-creation auditor queries Shopify API for every SKU, checks all required fields, detects stale Shopify-hosted videos and queues deletion, verifies CDN metafield URL matches SKU</li>
+            <li>Modified Shopify theme Liquid templates with conditional rendering: CDN video displays for migrated products; Shopify-hosted video displays for legacy listings — zero broken products during migration</li>
+            <li><strong>Result:</strong> 1,815 product videos migrated to <code>cdn.opaltrove.com</code>; Shopify storage freed; new product creation unblocked</li>
+          </ul>
+          <div class="card-stack">
+            <span class="stack-chip">PowerShell</span>
+            <span class="stack-chip">Shopify Admin API</span>
+            <span class="stack-chip">Shopify Dev Dashboard</span>
+            <span class="stack-chip">Cloudflare R2</span>
+            <span class="stack-chip">OAuth 2.0</span>
+            <span class="stack-chip">ffmpeg</span>
+            <span class="stack-chip">Shopify Liquid</span>
+            <span class="stack-chip">Metafields API</span>
+            <span class="stack-chip">CSS</span>
+            <span class="stack-chip">REST API</span>
+            <span class="stack-chip">AWS S3 CLI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 4: GOOGLE WORKSPACE -->
+      <div class="project-card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="card-meta">
+            <p class="card-category">Identity & Access Management · SaaS Admin</p>
+            <h2 class="card-title">Google Workspace — Full Lifecycle Administration</h2>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-problem"><span>Problem:</span>Business had no standardized identity infrastructure — no centralized user directory, no access controls, no offboarding process.</p>
+          <p class="card-desc">Planned and executed a full Google Workspace deployment from pilot to production. Managed the complete IAM lifecycle: provisioning, access control, domain configuration, and formal offboarding procedures.</p>
+          <ul class="card-points">
+            <li>Designed and led a Google Workspace pilot rollout: user provisioning, organizational unit structure, and directory setup across the business</li>
+            <li>Configured branded sending domain authentication: SPF, DKIM, and DMARC DNS records for opaltrove.com — hardening email security and deliverability</li>
+            <li>Owned ongoing access management: user creation, role assignment, permission scoping, and credential management</li>
+            <li>Developed and executed formal employee offboarding procedure: data export, credential revocation, and access removal across all connected systems</li>
+            <li>Configured email security settings and managed Klaviyo email marketing domain integration</li>
+          </ul>
+          <div class="card-stack">
+            <span class="stack-chip">Google Workspace Admin</span>
+            <span class="stack-chip">SPF / DKIM / DMARC</span>
+            <span class="stack-chip">DNS Configuration</span>
+            <span class="stack-chip">IAM</span>
+            <span class="stack-chip">User Provisioning</span>
+            <span class="stack-chip">Offboarding</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 5: IDENTITY & ACCESS SECURITY -->
+      <div class="project-card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="card-meta">
+            <p class="card-category">Cybersecurity · Identity Management</p>
+            <h2 class="card-title">Identity, Access & Credential Security</h2>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-problem"><span>Problem:</span>Employees were sharing login credentials across social media platforms with no MFA, no individual accountability, and no way to revoke access when someone left.</p>
+          <p class="card-desc">Identified shared credential usage as a critical security risk and systematically addressed it across every business platform — deploying hardware security keys, implementing centralized password management, and migrating social platforms to individual role-scoped employee accounts.</p>
+          <ul class="card-points">
+            <li>Deployed Yubico YubiKey hardware security keys (FIDO2/WebAuthn) organization-wide as phishing-resistant MFA — the strongest available authentication factor, recommended by NIST and CIS Controls</li>
+            <li>Implemented centralized password management to eliminate shared, weak, and reused credentials across the organization</li>
+            <li>Identified shared social media logins as a security and accountability gap; migrated Facebook and Instagram to Meta Business Suite with individual employee accounts and role-scoped permissions</li>
+            <li>Audited all business platforms for access control maturity: leveraged native employee/seller login structures on Shopify and WhatNot; TikTok individual account migration in progress</li>
+            <li>Combined with Google Workspace IAM, offboarding procedures, and VPN access tiering — established a complete identity lifecycle covering provisioning, access scoping, MFA enforcement, and revocation</li>
+          </ul>
+          <div class="card-stack">
+            <span class="stack-chip">Yubico YubiKey</span>
+            <span class="stack-chip">FIDO2 / WebAuthn</span>
+            <span class="stack-chip">Hardware MFA</span>
+            <span class="stack-chip">Password Management</span>
+            <span class="stack-chip">Meta Business Suite</span>
+            <span class="stack-chip">Identity Governance</span>
+            <span class="stack-chip">Least Privilege</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 6: COMCAST / ISP -->
+      <div class="project-card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="card-meta">
+            <p class="card-category">Network · ISP Project Management</p>
+            <h2 class="card-title">Comcast Business Fiber Implementation</h2>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-problem"><span>Problem:</span>Business required a commercial-grade internet connection with static IP addressing to support VPN endpoints, hosted services, and stable remote access.</p>
+          <p class="card-desc">Coordinated with Comcast Business engineers to implement a commercial fiber installation with dedicated static IP provisioning. Served as the primary technical point of contact for the project.</p>
+          <ul class="card-points">
+            <li>Managed vendor relationship and technical communication with Comcast Business implementation team throughout the project lifecycle</li>
+            <li>Provisioned and configured static IP assignment on the WAN interface of the UniFi UDM Pro</li>
+            <li>Integrated the static IP into VPN endpoint configuration, enabling reliable remote access for WireGuard VPN clients</li>
+            <li>Documented network configuration and IP assignment for internal records</li>
+          </ul>
+          <div class="card-stack">
+            <span class="stack-chip">Comcast Business</span>
+            <span class="stack-chip">Static IP Provisioning</span>
+            <span class="stack-chip">WAN Configuration</span>
+            <span class="stack-chip">Vendor Management</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 6: IT ASSET & OPS -->
+      <div class="project-card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          </div>
+          <div class="card-meta">
+            <p class="card-category">Systems Administration · IT Operations</p>
+            <h2 class="card-title">IT Asset Management & Operations</h2>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-problem"><span>Problem:</span>No inventory system, no hardware documentation, and no operational procedures existed when the IT function was established.</p>
+          <p class="card-desc">Built IT operations infrastructure from zero: hardware inventory, NAS audit procedures, device management, Windows licensing, and standard operating procedures — establishing the IT foundation for the organization.</p>
+          <ul class="card-points">
+            <li>Created and maintained a full IT device and hardware inventory tracking all endpoints, network equipment, and peripherals</li>
+            <li>Conducted NAS storage audits and documented storage allocation and access permissions</li>
+            <li>Managed Windows 11 licensing and deployment across organization endpoints</li>
+            <li>Authored and maintained Standard Operating Procedures documentation covering IT workflows</li>
+            <li>Configured and troubleshot OHAUS precision scale hardware integration through direct vendor technical engagement</li>
+            <li>Worked with management to convert a legal tip distribution agreement into a digitally-signable electronic document</li>
+          </ul>
+          <div class="card-stack">
+            <span class="stack-chip">Asset Management</span>
+            <span class="stack-chip">Windows 11</span>
+            <span class="stack-chip">Hardware Inventory</span>
+            <span class="stack-chip">SOP Documentation</span>
+            <span class="stack-chip">Digital Signatures</span>
+            <span class="stack-chip">Vendor Support</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT: BOOTCAMP CYBERSECURITY PROJECTS -->
+      <div class="project-card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="card-meta">
+            <p class="card-category">Penetration Testing · Cloud Security · Forensics</p>
+            <h2 class="card-title">Rice University Cybersecurity Bootcamp Projects</h2>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Completed an intensive cybersecurity bootcamp at Rice University in 2022, producing hands-on project work across penetration testing, cloud security, network security, Linux administration, cryptography, digital forensics, and security culture analysis.</p>
+          <ul class="card-points">
+            <li><strong>Penetration Testing — MegaCorpOne & Rekall:</strong> Conducted full simulated penetration tests against lab environments, producing professional-grade reports covering reconnaissance, exploitation, privilege escalation, and remediation recommendations</li>
+            <li><strong>RouterSploit Vulnerability Scanning (BootCon Presentation):</strong> Co-presented at BootCon on using RouterSploit (Kali Linux exploitation framework) to scan embedded devices for vulnerabilities — framed defensively to demonstrate real-world router hardening strategies including VPN routers, firmware updates, admin interface hardening, and network segmentation</li>
+            <li><strong>Azure Cloud Security:</strong> Designed, deployed, and secured a web application (cicadacyber.xyz) in a Microsoft Azure lab environment — implemented SSL/TLS via Azure Key Vault, configured Web Application Firewall (WAF) rules, set up front/back door accessibility, and analyzed Security Center alerts and recommendations</li>
+            <li><strong>Linux Systems Administration:</strong> Troubleshot performance and access control issues using Bash scripting and SSH; documented procedures and updated knowledge base articles</li>
+            <li><strong>Windows Administration & Hardening:</strong> User account management, Active Directory configuration, network troubleshooting, and support documentation</li>
+            <li><strong>Network Security & Cryptography:</strong> Hands-on labs covering network traffic analysis, cryptographic challenges, and network security hardening</li>
+            <li><strong>Digital Forensics:</strong> Correspondence evidence analysis and forensic investigation procedures</li>
+            <li><strong>Security Culture Assessment:</strong> Analyzed organizational security posture and recommended awareness and policy improvements</li>
+          </ul>
+          <div class="card-stack">
+            <span class="stack-chip">Kali Linux</span>
+            <span class="stack-chip">RouterSploit</span>
+            <span class="stack-chip">Metasploit</span>
+            <span class="stack-chip">Microsoft Azure</span>
+            <span class="stack-chip">WAF</span>
+            <span class="stack-chip">SSL / TLS</span>
+            <span class="stack-chip">Active Directory</span>
+            <span class="stack-chip">Bash</span>
+            <span class="stack-chip">Wireshark</span>
+            <span class="stack-chip">Splunk</span>
+            <span class="stack-chip">Digital Forensics</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /projects-grid -->
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="container">
+    <p class="section-label">Technical Skills</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <p class="skill-group-label">Network</p>
+        <ul class="skill-list">
+          <li>Ubiquiti UniFi / UDM Pro</li>
+          <li>VLAN Design & Segmentation</li>
+          <li>WireGuard VPN</li>
+          <li>TCP/IP, DHCP, DNS</li>
+          <li>Static IP Provisioning</li>
+          <li>Network Topology Design</li>
+          <li>USW Managed Switching</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-label">Security</p>
+        <ul class="skill-list">
+          <li>CompTIA Security+ (Certified)</li>
+          <li>Firewall Rule Authoring</li>
+          <li>IDS / IPS (CyberSecure)</li>
+          <li>VPN Access Tiering</li>
+          <li>YubiKey / FIDO2 / WebAuthn</li>
+          <li>Hardware MFA Deployment</li>
+          <li>Password Management</li>
+          <li>SPF / DKIM / DMARC</li>
+          <li>Least-Privilege Design</li>
+          <li>Defense-in-Depth</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-label">Systems & Cloud</p>
+        <ul class="skill-list">
+          <li>Synology DSM / NAS Admin</li>
+          <li>Microsoft Azure</li>
+          <li>Cloudflare R2 / S3 API</li>
+          <li>Google Workspace Admin</li>
+          <li>Windows / macOS / Linux</li>
+          <li>VMware / Hyper-V</li>
+          <li>Active Directory</li>
+          <li>MDM / Device Management</li>
+          <li>Identity & Access Mgmt</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-label">Development</p>
+        <ul class="skill-list">
+          <li>PowerShell (Automation)</li>
+          <li>Bash / Python</li>
+          <li>Shopify Liquid Templates</li>
+          <li>REST API / OAuth 2.0</li>
+          <li>HTML / CSS</li>
+          <li>ffmpeg</li>
+          <li>CSV / Data Pipelines</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-label">Security Tools</p>
+        <ul class="skill-list">
+          <li>Splunk</li>
+          <li>Security Onion</li>
+          <li>Wireshark</li>
+          <li>Kali Linux</li>
+          <li>RouterSploit</li>
+          <li>Metasploit</li>
+          <li>Azure WAF / Key Vault</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-label">Operations & Leadership</p>
+        <ul class="skill-list">
+          <li>IT Asset Management</li>
+          <li>SOP Documentation</li>
+          <li>Vendor Management</li>
+          <li>Hardware Troubleshooting</li>
+          <li>Pipeline QA & Data Validation</li>
+          <li>Data Governance Enforcement</li>
+          <li>Cross-Platform Revenue Reporting</li>
+          <li>Non-Technical Staff Training</li>
+          <li>Front-End Website Auditing</li>
+          <li>Project Coordination</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="container">
+    <p class="section-label">Experience</p>
+    <div style="display:flex;flex-direction:column;gap:2px;">
+
+      <!-- OPAL TROVE -->
+      <div class="experience-block">
+        <div class="exp-header">
+          <h3 class="exp-title">IT Administrator &amp; Systems Engineer</h3>
+          <span class="exp-date">2025 — 2026</span>
+        </div>
+        <p class="exp-company">Opal Trove · Houston, TX</p>
+        <p class="exp-note">Hired into an operations role; independently identified and filled the organization's IT function from zero — building network infrastructure, security architecture, and automation tooling without a formal IT department or predecessor.</p>
+        <ul class="exp-bullets">
+          <li>Designed and deployed enterprise network infrastructure: Ubiquiti UDM Pro, 4-VLAN segmentation, dual WireGuard VPN servers, 15-rule firewall policy with named network objects, and IDS/IPS with 70,955 active signatures across 6 threat categories</li>
+          <li>Built a 6-stage PowerShell automation pipeline integrating a custom Shopify Admin API app, Cloudflare R2, ffmpeg, and OAuth 2.0 — migrated 1,815 product videos to CDN, resolving a storage crisis that had blocked all new product creation</li>
+          <li>Deployed Yubico YubiKey hardware security keys (FIDO2/WebAuthn) organization-wide; implemented centralized password management; migrated social media platforms to Meta Business Suite with individual employee accounts and role-scoped permissions</li>
+          <li>Provisioned and secured a Synology NAS as the organization's central media repository; implemented layered NAS-level firewall with default-deny and explicit allowlisting</li>
+          <li>Planned and executed Google Workspace rollout; managed full IAM lifecycle including user provisioning, access control, DNS authentication records (SPF/DKIM/DMARC), and formal employee offboarding</li>
+          <li>Operated in a de facto lead technical role — developing intake workflows and data governance standards for non-technical staff, performing ongoing CSV QA and pipeline validation, and enforcing organizational data policies</li>
+          <li>Conducted front-end website audits to retroactively identify and replace substandard legacy product media across 9,999+ product listings; compiled and reported cross-platform revenue data for leadership review</li>
+          <li>Coordinated Comcast Business fiber and static IP implementation; authored IT SOPs, maintained hardware inventory, and managed Windows 11 licensing</li>
+        </ul>
+      </div>
+
+      <!-- MOON RABBIT -->
+      <div class="experience-block" style="margin-top:2px;">
+        <div class="exp-header">
+          <h3 class="exp-title">Server</h3>
+          <span class="exp-date">2024 — 2025</span>
+        </div>
+        <p class="exp-company">Moon Rabbit Restaurant · Houston, TX</p>
+        <ul class="exp-bullets">
+          <li>Delivered high-volume table service in a fast-paced hospitality environment, managing multiple priorities simultaneously under pressure</li>
+          <li>Developed strong customer communication skills translating to clear, accessible technical explanations for non-technical stakeholders</li>
+        </ul>
+      </div>
+
+      <!-- PRIMITIVE BLADES -->
+      <div class="experience-block" style="margin-top:2px;">
+        <div class="exp-header">
+          <h3 class="exp-title">IT Support Specialist &amp; Freelance Web Developer</h3>
+          <span class="exp-date">May 2023 — Nov 2023</span>
+        </div>
+        <p class="exp-company">Primitive Blades LLC · Houston, TX</p>
+        <ul class="exp-bullets">
+          <li>Provided IT support across hardware, software, and network connectivity — troubleshooting Microsoft 365, Squarespace, and workstation issues with documented resolutions in ticketing system</li>
+          <li>Built and independently managed the company website as a freelance engagement alongside the IT support role — demonstrating trusted expanded responsibility beyond the formal position</li>
+          <li>Escalated complex technical issues to Tier 2 support and external vendors; maintained high user satisfaction through clear communication and timely resolution</li>
+        </ul>
+      </div>
+
+      <!-- PRIOR EXPERIENCE -->
+      <div class="experience-block" style="margin-top:2px;">
+        <div class="exp-header">
+          <h3 class="exp-title">Prior Experience</h3>
+          <span class="exp-date">Pre-2023</span>
+        </div>
+        <p class="exp-company">Healthcare · Hospitality · Administrative · Legal Support · Houston, TX</p>
+        <ul class="exp-bullets">
+          <li>Held roles across healthcare, food &amp; beverage, hospitality, receptionist, and legal support environments — developing cross-functional communication, operational discipline, and the ability to work effectively with diverse teams and clients</li>
+          <li>Customer-facing experience across high-pressure environments directly informs ability to communicate technical concepts clearly to non-technical stakeholders and manage competing priorities</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+  <div class="container">
+    <p class="section-label">Education</p>
+    <div style="display:flex;flex-direction:column;gap:2px;">
+      <div class="experience-block">
+        <div class="exp-header">
+          <h3 class="exp-title">B.S. Criminal Justice, <em style="font-style:italic;font-size:18px;">Cum Laude</em></h3>
+          <span class="exp-date">May 2019</span>
+        </div>
+        <p class="exp-company">University of Houston-Downtown · Minor in Psychology</p>
+        <ul class="exp-bullets">
+          <li>Graduated with honors. Criminal Justice + Psychology background directly applicable to threat intelligence, digital forensics, insider threat analysis, and security awareness roles</li>
+        </ul>
+      </div>
+      <div class="experience-block" style="margin-top:2px;">
+        <div class="exp-header">
+          <h3 class="exp-title">Cybersecurity Bootcamp</h3>
+          <span class="exp-date">2022</span>
+        </div>
+        <p class="exp-company">Rice University · Certificate of Completion</p>
+        <ul class="exp-bullets">
+          <li>Intensive program covering penetration testing, network security, Linux administration, cloud security (Azure), cryptography, digital forensics, SIEM (Splunk), and Security Onion</li>
+          <li>Completed two full penetration test reports (MegaCorpOne, Rekall) and co-presented RouterSploit vulnerability scanning research at BootCon</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="section" id="certs">
+  <div class="container">
+    <p class="section-label">Certifications</p>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="certs-note">
+        <span class="certs-note-icon">✅</span>
+        <p class="certs-note-text">
+          <strong>CompTIA Security+</strong> — Certified. Covers network security, threat detection, identity and access management, cryptography, and incident response — all of which are directly demonstrated in the projects above.
+        </p>
+      </div>
+      <div class="certs-note">
+        <span class="certs-note-icon">📋</span>
+        <p class="certs-note-text">
+          <strong>CompTIA Network+ — In progress.</strong> The hands-on network work in this portfolio maps directly to the exam domains: VLAN design, VPN implementation, firewall policy, static IP provisioning, and network topology.
+          <strong style="display:block;margin-top:6px;">Google Workspace Administrator — In progress.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="container">
+    <p class="section-label">Contact</p>
+    <p style="font-size:15px;font-weight:300;color:var(--ink-soft);margin-bottom:28px;max-width:480px;">
+      Open to IT Administrator, Network Administrator, Systems Engineer,
+      SOC Analyst, Cybersecurity Analyst, and Penetration Tester roles.
+    </p>
+    <div class="contact-row">
+      <a class="contact-btn primary" href="mailto:teresanguyen.cyber@gmail.com">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Get in Touch
+      </a>
+      <a class="contact-btn secondary" href="https://linkedin.com/in/teresanguyen" target="_blank">
+        LinkedIn
+      </a>
+      <a class="contact-btn secondary" href="https://github.com/teresanguyen" target="_blank">
+        GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-name">Teresa Nguyen</span>
+    <span class="footer-copy">Built with intention · 2026</spa
